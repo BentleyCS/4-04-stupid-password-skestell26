@@ -14,6 +14,18 @@ Output Data
 Return a list of all "stupid" passwords in alphabetical order.
 """
 
-def stupidPassword(n: int, l: int):
-    pass
 
+def stupidPassword(n: int, l: int):
+    passwords = []
+
+    letters = [chr(ord('a') + i) for i in range(l)]
+
+    for d1 in range(1, n + 1):
+        for d2 in range(1, n + 1):
+            for c1 in letters:
+                for c2 in letters:
+                    # The 5th digit must be greater than both d1 and d2
+                    for d5 in range(max(d1, d2) + 1, n + 1):
+                        passwords.append(f"{d1}{d2}{c1}{c2}{d5}")
+
+    return passwords
